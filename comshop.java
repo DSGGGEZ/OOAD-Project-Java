@@ -10,32 +10,41 @@ public class comshop {
     }
 
     public static void firstPage() {
-        System.out.println("                    Welcome to DSG Comshop");
-        System.out.println("================================================================");
-        System.out.println("Please select you option");
-        System.out.println("1.register");
-        System.out.println("2.login");
-        System.out.println("3.exit");
-        System.out.println("================================================================");
-        System.out.print("Your option : ");
+        // ตัวเลือก
+        int selection;
 
-        int selection = option.nextInt();
-        System.out.println("================================================================");
-        if (selection == 1) {
-            System.out.println("                    Go to register");
-        } else if (selection == 2) {
-            login();
-
-        } else {
-            System.out.println("                          Good bye");
+        do {
+            System.out.println("                    Welcome to DSG Comshop");
             System.out.println("================================================================");
-        }
+            System.out.println("Please select you option");
+            System.out.println("1.login");
+            System.out.println("2.register");
+            System.out.println("0.exit");
+            System.out.println("================================================================");
+            System.out.print("Your option : ");
+            // ตัวเลือก
+            selection = option.nextInt();
+            System.out.println("================================================================");
+            // condition
+            if (selection == 1) {
+                System.out.println("                        Going to login...");
+                login();
+            } else if (selection == 2) {
+                System.out.println("                        Going to register...");
+            } else {
+                System.out.println("                          Good bye");
+                System.out.println("================================================================");
+                break;
+            }
+        } while (selection != 0);
+
     }
 
     // login page for comshop client & member
     public static void login() {
         client clientOption = new client();
         member memberOption = new member();
+        int loginOption;
 
         System.out.println("                         Login Option");
         System.out.println("1.Client login");
@@ -43,10 +52,10 @@ public class comshop {
         System.out.println("3.back to firstPage");
         System.out.println("================================================================");
         System.out.print("Your option : ");
-
-        int loginOption = option.nextInt();
+        // ตัวเลือก
+        loginOption = option.nextInt();
         System.out.println("================================================================");
-
+        // login option
         // login as client
         if (loginOption == 1) {
             System.out.println("                         Client Login");
@@ -90,26 +99,26 @@ public class comshop {
         System.out.println("================================================================");
 
         if (clientOption == 1) {
-            System.out.println("DSG Comshop Admin : Member");
+            System.out.println("                DSG Comshop Admin : Member");
             System.out.println("Please select option");
             clientMemberMenu();
         } else if (clientOption == 2) {
-            System.out.println("DSG Comshop Admin : Product");
+            System.out.println("                DSG Comshop Admin : Product");
             System.out.println("Please select option");
         } else if (clientOption == 3) {
-            System.out.println("DSG Comshop Admin : Order");
+            System.out.println("                DSG Comshop Admin : Order");
             System.out.println("Please select option");
         } else if (clientOption == 4) {
-            System.out.println("DSG Comshop Admin : Delivery");
+            System.out.println("                DSG Comshop Admin : Delivery");
             System.out.println("Please select option");
         } else if (clientOption == 5) {
-            System.out.println("DSG Comshop Admin : Receipt");
+            System.out.println("                DSG Comshop Admin : Receipt");
             System.out.println("Please select option");
         } else if (clientOption == 6) {
-            System.out.println("DSG Comshop Admin : Waranty");
+            System.out.println("                DSG Comshop Admin : Waranty");
             System.out.println("Please select option");
         } else {
-            System.out.print("                    Back to Login Page...");
+            System.out.println("                    Back to Login Page...");
             System.out.println("================================================================");
             firstPage();
         }
@@ -118,8 +127,10 @@ public class comshop {
     // client member menu for managing
     public static void clientMemberMenu() {
 
-        client clientOption = new client();
+        Admin adminOption = new Admin();
         member memberOption = new member();
+        int clientMemberOption;
+        int clientMemberData;
 
         System.out.println("1.View Member");
         System.out.println("2.Add Member");
@@ -128,12 +139,27 @@ public class comshop {
         System.out.println("0.Back");
         System.out.println("================================================================");
         System.out.print("Your option : ");
-        int clientMemberOption = option.nextInt();
+        clientMemberOption = option.nextInt();
         System.out.println("================================================================");
 
         if (clientMemberOption == 1) {
-            System.out.println(memberOption.getData());
+            System.out.println("                DSG Comshop Admin : Member");
+            System.out.println("1.View All Member");
+            System.out.println("2.Search Member");
+            System.out.println("3.Back");
             System.out.println("================================================================");
+            System.out.print("Your option : ");
+            clientMemberOption = option.nextInt();
+            System.out.println("================================================================");
+            if (clientMemberOption == 1) {
+                System.out.println(memberOption.getAllMemberData());
+            } else if (clientMemberOption == 2) {
+                System.out.print("Insert member id : ");
+                clientMemberData = data.nextInt();
+                System.out.println("================================================================");
+                System.out.println(memberOption.getMemberByID(clientMemberData));
+                System.out.println("================================================================");
+            }
             clientMemberMenu();
         } else if (clientMemberOption == 2) {
             System.out.print("Name : ");
@@ -174,7 +200,7 @@ public class comshop {
 
 // ========================================================================================================================================================//
 
-class client {
+class Admin {
 
     Scanner co = new Scanner(System.in);
 
@@ -184,13 +210,13 @@ class client {
     comshop page = new comshop();
     member memberData = new member();
 
-    client() {
+    admin() {
         this.username = "DSGGGEZ";
         this.password = "1234";
     }
 
-    public void clientLogin(String cUsername, String cPassword) {
-        if (cUsername.equals(username) && cPassword.equals(password)) {
+    public void adminLogin(String aUsername, String aPassword) {
+        if (aUsername.equals(username) && aPassword.equals(password)) {
             comshop.clientMain();
         } else {
             System.out.println("                    Wrong username or password!");
@@ -207,12 +233,12 @@ class client {
 class member {
 
     int[] member_id = new int[100];
-    String[] member_password = new String[100];
-    String[] citizen_id = new String[100];
-    String[] member_name = new String[100];
-    String[] address = new String[100];
-    String[] email = new String[100];
-    String[] telephone = new String[100];
+    final String[] member_password = new String[100];
+    final String[] citizen_id = new String[100];
+    final String[] member_name = new String[100];
+    final String[] address = new String[100];
+    final String[] email = new String[100];
+    final String[] telephone = new String[100];
     int[] balance = new int[100];
 
     int x = 0;
@@ -229,7 +255,6 @@ class member {
         this.email[0] = "nanthapongk@nu.ac.th";
         this.telephone[0] = "0000000000";
         this.balance[0] = 0;
-        this.x += 1;
     }
 
     public boolean memberlogin(String mUsername, String mPassword) {
@@ -247,7 +272,7 @@ class member {
         return result;
     }
 
-    public String getData() {
+    public String getAllMemberData() {
         String print = "Number of Member : " + x + 1;
         if (member_id.length >= 0) {
             for (int i = 0; i < x + 1; i++) {
@@ -263,6 +288,31 @@ class member {
             print = "Member is empty";
         }
         return print;
+    }
+
+    public String getMemberByID(int id) {
+        int param = id;
+        int pos = 0;
+        String ret = "";
+        for (int i = 0; i < member_id.length; i++) {
+            if (member_id[i] == param) {
+                pos += param;
+                // ret = "\n MemberID : " + member_id[pos] + " \n Password : " +
+                // member_password[pos]
+                // + " \n CitizenID : "
+                // + citizen_id[pos] + " \n Name : " + member_name[pos] + " \n Address : " +
+                // address[pos]
+                // + " \n Email : "
+                // + email[pos] + " \n Telephone : " + telephone[pos] + " \n Balance : " +
+                // balance[pos]
+                // + " \n -------------------------------";
+                ret = "Found!";
+            } else {
+                ret = "Member Not Found";
+            }
+        }
+
+        return (ret);
     }
 
     public String addMember(String member_name, String member_password, String citizen_id,
