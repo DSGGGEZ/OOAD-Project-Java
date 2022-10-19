@@ -133,7 +133,7 @@ public class Member {
 
     // -----------------------------------------DeleteMethod----------------------------------------------
     public void deleteMember(int id) {
-        int pos = id - 1;
+        int pos = id;
         member_id[pos] = 0;
         member_password[pos] = null;
         citizen_id[pos] = null;
@@ -151,7 +151,7 @@ public class Member {
         balance[id] -= total;
     }
 
-    public void topup(int id, int total) {
+    public static void topup(int id, int total) {
         balance[id] += total;
     }
 

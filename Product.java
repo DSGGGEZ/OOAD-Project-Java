@@ -95,7 +95,7 @@ public class Product {
     }
 
     public void deleteProduct(int id) {
-        int pos = id - 1;
+        int pos = id;
         pId[pos] = 0;
         pName[pos] = null;
         pType[pos] = null;

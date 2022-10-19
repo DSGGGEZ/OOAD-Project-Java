@@ -239,7 +239,8 @@ public class comshop {
         System.out.println("Number of Member : " + Member.limit);
         for (int i = 1; i <= Member.limit; i++) {
             if (member.getMemberId(i) == 0) {
-                System.out.println("Member was deleted");
+                System.out.println(
+                        "Member was deleted \n ----------------------------------------------------------------");
             } else if (Member.limit > 0) {
                 System.out.println(
                         " ID : " + member.getMemberId(i) + "\n Name : " + member.getMemberName(i)
@@ -259,7 +260,8 @@ public class comshop {
         System.out.println("1.Search Member");
         System.out.println("2.Add Member");
         System.out.println("3.Edit Member");
-        System.out.println("4.Delete Member");
+        System.out.println("4.Topup");
+        System.out.println("5.Delete Member");
         System.out.println("0.Back");
         System.out.println("================================================================");
         System.out.print("Your option : ");
@@ -319,12 +321,12 @@ public class comshop {
         // Edit Member Data
         else if (selection == 3) {
             System.out.println("                         Edit member");
-            System.out.println("Press 3 to back");
+            System.out.println("0.back");
             System.out.println("================================================================");
             System.out.print("Enter Member ID : ");
             selectId = option.nextInt();
             System.out.println("================================================================");
-            if (selectId != 3) {
+            if (selectId != 0) {
                 System.out.println("                        Edit member : " + selectId);
                 System.out.print("Name : ");
                 String member_name = data2.nextLine();
@@ -351,9 +353,30 @@ public class comshop {
                 adminMemberMenu();
             }
 
+        } else if (selection == 4) {
+            System.out.println("                                Topup");
+            System.out.println("0.back");
+            System.out.println("================================================================");
+            System.out.print("Enter Member ID : ");
+            selectId = option.nextInt();
+            System.out.println("================================================================");
+            if (selectId != 0) {
+                System.out.println("                        Topup : " + member.getMemberName(selectId));
+                System.out.print("Topup amount : ");
+                int topup = data6.nextInt();
+                System.out.println("================================================================");
+                System.out.println("             Topup : " + member.getMemberName(selectId) + " Success!");
+                member.topup(selectId, topup);
+                System.out.println("Press 0 to continue");
+                System.out.println("================================================================");
+                next = option.nextInt();
+                adminMemberMenu();
+            } else {
+                adminMemberMenu();
+            }
         }
         // Delete Member
-        else if (selection == 4) {
+        else if (selection == 5) {
             System.out.println("                        Delete member");
             System.out.println("0.Back");
             System.out.println("================================================================");
@@ -462,15 +485,13 @@ public class comshop {
             System.out.println("================================================================");
             System.out.print("Enter Product ID to Delete : ");
             int deleteProduct = option.nextInt();
-            if (selectId != 0) {
-
+            if (deleteProduct != 0) {
                 System.out.println(
-                        "   Product : " + product.getPname(selectId) + " was Deleted");
+                        "   Product : " + product.getPname(deleteProduct) + " was Deleted");
                 System.out.println("Press 0 to continue");
                 product.deleteProduct(deleteProduct);
                 System.out.println("================================================================");
                 next = option.nextInt();
-
                 adminProductMenu();
             } else {
                 System.out.println("================================================================");
