@@ -28,7 +28,9 @@ public class comshop {
     // Admin Data
     static String username = "DSGGGEZ";
     static String password = "1111";
-    static Admin admin = new Admin(username, password);
+    static String nickname = "DSG";
+    static String birthday = "04-09-2001";
+    static Admin admin = new Admin(username, password, nickname, birthday);
     // Member Data
     static int member_id = 1;
     static String member_password = "11111111";
@@ -173,9 +175,9 @@ public class comshop {
         else if (selection == 2) {
             System.out.println("                         Member Login");
             System.out.print("Member ID : ");
-            int mid = option.nextInt();
+            int mid = data1.nextInt();
             System.out.print("Enter Password : ");
-            String mPassword = data1.nextLine();
+            String mPassword = data2.nextLine();
             System.out.println("================================================================");
             memberLogin(mid, mPassword);
         } else {
