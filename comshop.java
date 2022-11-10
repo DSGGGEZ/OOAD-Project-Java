@@ -69,7 +69,7 @@ public class comshop {
     static int idP = 1;
     static String date_bought = dateFormat.format(date);;
     static int totalP = 1;
-    static String status_order = "Delivery";
+    static String status_order = "waiting";
     static Order order = new Order(id_member, idP, date_bought, totalP, status_order);
 
     // Delivery Data
