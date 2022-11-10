@@ -681,8 +681,8 @@ public class comshop {
             System.out.println("================================================================");
             System.out.print("Enter Waranty ID : ");
             int w = data1.nextInt();
-            if (selectId != 0) {
-                Waranty.updateWarantyStatus(w, "Expired");
+            if (w != 0) {
+                waranty.updateWarantyStatus(w);
                 System.out.println("================================================================");
                 System.out.println("                            Success!");
                 System.out.println("================================================================");

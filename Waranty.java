@@ -37,8 +37,8 @@ public class Waranty {
         waranty_status[limit] = "In waranty";
     }
 
-    public static void updateWarantyStatus(int id, String status_waranty) {
-        waranty_status[id] = status_waranty;
+    public static void updateWarantyStatus(int id) {
+        waranty_status[id] = "Expired";
     }
 
 }
