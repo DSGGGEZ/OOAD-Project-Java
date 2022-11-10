@@ -632,7 +632,9 @@ public class comshop {
                 System.out.print("Your Option : ");
                 selection = data1.nextInt();
                 if (selection == 1) {
-                    delivery.deleteOrder(d);
+                    // delivery.deleteOrder(d);
+                    order.completedOrder(d, "Delivery Completed");
+                    waranty.addWaranty(d);
                     adminDeliveryMenu();
                 } else {
                     adminDeliveryMenu();

@@ -132,7 +132,7 @@ public class Delivery {
     // --------------------------------------setMothod---------------------------------------------------
     public void setDeliveryData(int limP, int idO, int id_member, String address_delivery) {
 
-        limit += limP;
+        limit++;
         did[limit] = limit;
         oid[limit] = idO;
         member_id[limit] = id_member;
@@ -143,12 +143,12 @@ public class Delivery {
         delivery_track[limit] = track_delivery;
     }
 
-    public void deleteOrder(int id) {
-        did[id] = 0;
-        oid[id] = 0;
-        member_id[id] = 0;
-        delivery_address[id] = null;
-        delivery_track[id] = null;
-    }
+    // public void completedOrder(int id) {
+    // did[id] = 0;
+    // oid[id] = 0;
+    // member_id[id] = 0;
+    // delivery_address[id] = null;
+    // delivery_track[id] = null;
+    // }
 
 }

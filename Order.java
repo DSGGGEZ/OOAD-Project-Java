@@ -169,6 +169,10 @@ public class Order {
         order_status[id] = status;
     }
 
+    public void completedOrder(int id, String status) {
+        order_status[id] = status;
+    }
+
     public int cancelOrder(int id) {
         int refund = total[id];
 
