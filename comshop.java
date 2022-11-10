@@ -539,6 +539,7 @@ public class comshop {
                 System.out.println("================================================================");
                 System.out.println("                        Order Confirmed!");
                 System.out.println("================================================================");
+                adminOrderMenu();
             } else if (selection == 2) {
                 stat = "Cancel";
                 System.out.println("                 Do you want to Cancel Order : " + selectId);
