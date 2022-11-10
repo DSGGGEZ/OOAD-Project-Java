@@ -1,7 +1,5 @@
-public class Member {
+public class Member extends Person {
 
-    static int[] member_id = new int[100];
-    static String[] member_password = new String[100];
     static String[] citizen_id = new String[100];
     static String[] member_name = new String[100];
     static String[] address = new String[100];
@@ -13,8 +11,8 @@ public class Member {
 
     Member(int member_id, String member_password, String citizen_id, String member_name, String address, String email,
             String telephone, int balance) {
-        Member.member_id[limit] = member_id;
-        Member.member_password[limit] = member_password;
+        super.personId[limit] = member_id;
+        super.password[limit] = member_password;
         Member.citizen_id[limit] = citizen_id;
         Member.member_name[limit] = member_name;
         Member.address[limit] = address;
@@ -27,8 +25,8 @@ public class Member {
     public int getMemberId(int id) {
         int idMember = 0;
         for (int i = 0; i <= limit; i++) {
-            if (member_id[i] == id) {
-                idMember = member_id[i];
+            if (personId[i] == id) {
+                idMember = personId[i];
             }
         }
 
@@ -38,8 +36,8 @@ public class Member {
     public String getMemberPassword(int id) {
         String passwordMember = "";
         for (int i = 0; i <= limit; i++) {
-            if (id == member_id[i]) {
-                passwordMember = member_password[i];
+            if (id == personId[i]) {
+                passwordMember = password[i];
             }
         }
         return passwordMember;
@@ -48,7 +46,7 @@ public class Member {
     public String getMemberCitizenId(int id) {
         String idCitizen = "";
         for (int i = 0; i <= limit; i++) {
-            if (id == member_id[i]) {
+            if (id == personId[i]) {
                 idCitizen = citizen_id[i];
             }
         }
@@ -58,7 +56,7 @@ public class Member {
     public static String getMemberName(int id) {
         String nameMember = "";
         for (int i = 0; i <= limit; i++) {
-            if (id == member_id[i]) {
+            if (id == personId[i]) {
                 nameMember = member_name[i];
             }
         }
@@ -78,7 +76,7 @@ public class Member {
     public String getEmail(int id) {
         String emailM = "";
         for (int i = 0; i <= limit; i++) {
-            if (id == member_id[i]) {
+            if (id == personId[i]) {
                 emailM = email[i];
             }
         }
@@ -88,7 +86,7 @@ public class Member {
     public String getTelephone(int id) {
         String telephoneM = "";
         for (int i = 0; i <= limit; i++) {
-            if (id == member_id[i]) {
+            if (id == personId[i]) {
                 telephoneM = telephone[i];
             }
         }
@@ -98,7 +96,7 @@ public class Member {
     public int getBalance(int id) {
         int balanceM = 0;
         for (int i = 0; i <= limit; i++) {
-            if (id == member_id[i]) {
+            if (id == personId[i]) {
                 balanceM = balance[i];
             }
         }
@@ -109,9 +107,9 @@ public class Member {
     public static void setMemberData(int limP, int id, String name_member, String password_member, String idCitizen,
             String addressM, String emailM, String telephoneM, int balanceM) {
         limit += limP;
-        member_id[limit] = limit;
+        personId[limit] = limit;
         member_name[limit] = name_member;
-        member_password[limit] = password_member;
+        password[limit] = password_member;
         citizen_id[limit] = idCitizen;
         address[limit] = addressM;
         email[limit] = emailM;
@@ -123,7 +121,7 @@ public class Member {
     public static void editMemberData(int selectId, String name_member, String password_member,
             String idCitizen, String addressM, String emailM, String telephoneM, int balanceM) {
         member_name[selectId] = name_member;
-        member_password[selectId] = password_member;
+        password[selectId] = password_member;
         citizen_id[selectId] = idCitizen;
         address[selectId] = addressM;
         email[selectId] = emailM;
@@ -134,8 +132,8 @@ public class Member {
     // -----------------------------------------DeleteMethod----------------------------------------------
     public void deleteMember(int id) {
         int pos = id;
-        member_id[pos] = 0;
-        member_password[pos] = null;
+        personId[pos] = 0;
+        password[pos] = null;
         citizen_id[pos] = null;
         member_name[pos] = null;
         address[pos] = null;

@@ -26,11 +26,12 @@ public class comshop {
     SimpleDateFormat dateFormatExp = new SimpleDateFormat("hh:mm:ss dd-mm-yyyy ");
 
     // Admin Data
+    static int aid = 1;
     static String username = "DSGGGEZ";
     static String password = "1111";
     static String nickname = "DSG";
     static String birthday = "04-09-2001";
-    static Admin admin = new Admin(username, password, nickname, birthday);
+    static Admin admin = new Admin(aid, username, password, nickname, birthday);
     // Member Data
     static int member_id = 1;
     static String member_password = "11111111";
@@ -82,7 +83,7 @@ public class comshop {
     static Waranty waranty = new Waranty(1, 1);
 
     public static void main(String[] args) {
-
+        System.out.println(admin.getUsername(0) + " " + admin.getPassword(0));
         firstPage();
     }
 
@@ -187,7 +188,7 @@ public class comshop {
 
     // ----------------------------------------------------------------Admin----------------------------------------------------------------------------------
     public static void adminLogin(String cUsername, String cPassword) {
-        if (cUsername.equals(admin.getUsername()) && cPassword.equals(admin.getPassword())) {
+        if (cUsername.equals(admin.getUsername(0)) && cPassword.equals(admin.getPassword(0))) {
             adminLogin = true;
             adminMain();
         } else {
@@ -196,6 +197,7 @@ public class comshop {
             System.out.println("================================================================");
             login();
         }
+
     }
 
     // admin main page for managing system
@@ -624,7 +626,7 @@ public class comshop {
             System.out.println("================================================================");
             System.out.print("Enter Order ID : ");
             int d = data1.nextInt();
-            if (selectId != 0) {
+            if (d != 0) {
                 System.out.println("                 Do you want to Complete Delivery : " + d);
                 System.out.println("1.Confirm");
                 System.out.println("0.Back");
@@ -685,6 +687,7 @@ public class comshop {
                 waranty.updateWarantyStatus(w);
                 System.out.println("================================================================");
                 System.out.println("                            Success!");
+
                 System.out.println("================================================================");
             }
             adminWaranty();
@@ -698,7 +701,7 @@ public class comshop {
     public static boolean memberLogin(int mid, String mPassword) {
         int memid = 0;
         if (memberLogin == false) {
-            for (int i = 0; i < Member.member_id.length; i++) {
+            for (int i = 0; i < Member.personId.length; i++) {
                 if (mid == member.getMemberId(i) && mPassword.equals(member.getMemberPassword(i))) {
                     memberLogin = true;
                     memid = member.getMemberId(i);
